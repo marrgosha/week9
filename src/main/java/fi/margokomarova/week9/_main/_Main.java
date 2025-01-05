@@ -28,7 +28,12 @@ public class _Main {
         //System.out.println(count);
 
         //task5
-        //String names=animalStream.map(animal -> animal.getName().toString());
+        Optional<String> names = animalStream.map(animal -> animal.getName())
+                .reduce((animal1, animal2) -> animal1 + "," + animal2);
+        if (names.isPresent()) {
+            String allNames = names.get();
+            System.out.println(allNames);
+        }
 
 
         // Optional<String> names=animalStream.reduce((animal, animal2) -> animal.getName()+animal2.getName());
@@ -43,7 +48,7 @@ public class _Main {
         // .forEach(animal -> System.out.println(animal.getName()+","+
         //        animal.getAge()));
 
-        //task1
+        /*task1
         Optional<Animal> anyLion = animalStream.filter(animal -> animal.getName().equals("lion"))
                 .findAny();
         try {
@@ -55,7 +60,7 @@ public class _Main {
             System.out.println("Age of lion=" + lion.getAge());
         } catch (Exception e) {
             System.out.println("Exception:" + e);
-        }
+        }*/
     }
 
 
